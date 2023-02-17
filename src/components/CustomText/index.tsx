@@ -49,12 +49,11 @@ type CustomTextProp = {
   maxWidth?: string;
   numberOfLines?: number;
   transform?: string;
-  lineHeight?: number;
 };
 
 const CustomText = ({
   fontSize = 14,
-  fontFamily = Fonts.InterRegular,
+  fontFamily = Fonts.UrbanistRegular,
   children,
   fontWeight,
   color = Colors.black,

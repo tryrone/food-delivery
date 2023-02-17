@@ -4,3 +4,4 @@ export const boxCup = require("./box_cup.png");
 export const kar = require("./kar.png");
 export const lentil = require("./lentil.png");
 export const vegan = require("./vegan.png");
+export const patternBg = require("./pattern.png");
