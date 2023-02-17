@@ -15,4 +15,5 @@ export default {
   error: "#ED5E3B",
   inputGreyBg: "#F7F7F7",
   green: "#34A853",
+  bgColor: "#FCFCFC",
 };

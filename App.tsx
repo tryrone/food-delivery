@@ -1,6 +1,6 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { useFonts } from "expo-font";
+import HomePage from "./src/pages/homePage";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -14,12 +14,7 @@ export default function App() {
     return <Text style={styles.loading}>Loading...</Text>;
   }
 
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <HomePage />;
 }
 
 const styles = StyleSheet.create({
