@@ -1,6 +1,6 @@
 import { StyleSheet, Text } from "react-native";
 import { useFonts } from "expo-font";
-import HomePage from "./src/pages/homePage";
+import Navigation from "./src/navigation";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -14,7 +14,7 @@ export default function App() {
     return <Text style={styles.loading}>Loading...</Text>;
   }
 
-  return <HomePage />;
+  return <Navigation />;
 }
 
 const styles = StyleSheet.create({

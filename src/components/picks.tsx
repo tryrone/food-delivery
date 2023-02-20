@@ -11,6 +11,7 @@ import {
 } from "../../assets/svg";
 import Colors from "../constants/Colors";
 import Fonts from "../constants/Fonts";
+import { ScreenDefaultProps } from "../types";
 import CustomText from "./CustomText";
 
 const SpaceBetween = styled.View<{ mb?: number }>`
@@ -24,7 +25,7 @@ const Container = styled.View<{ mt?: number }>`
   margin-top: ${({ mt }) => mt || 0}px;
 `;
 
-const CardWrap = styled.View`
+const CardWrap = styled.TouchableOpacity`
   padding-horizontal: 12px;
   padding-vertical: 16px;
   background-color: ${Colors?.lightGrey};
@@ -61,12 +62,13 @@ const BtnWrap = styled.TouchableOpacity<{ mr?: number }>`
 type CardProps = {
   name: string;
   image: number;
+  goToDetail: () => void;
 };
 
-const Card = ({ name, image }: CardProps): JSX.Element => {
+const Card = ({ name, image, goToDetail }: CardProps): JSX.Element => {
   const [liked, setLiked] = useState(false);
   return (
-    <CardWrap>
+    <CardWrap onPress={goToDetail}>
       <View style={{ marginLeft: 17, alignContent: "center" }}>
         <StarSvg style={{ position: "relative", left: 4 }} />
         <CustomText
@@ -128,7 +130,7 @@ const Card = ({ name, image }: CardProps): JSX.Element => {
   );
 };
 
-const Picks = (): JSX.Element => {
+const Picks = ({ navigation }: ScreenDefaultProps): JSX.Element => {
   const pickData = [
     {
       image: kar,
@@ -169,7 +171,12 @@ const Picks = (): JSX.Element => {
         showsHorizontalScrollIndicator={false}
       >
         {pickData?.map((item, index) => (
-          <Card key={index} name={item?.name} image={item?.image} />
+          <Card
+            key={index}
+            name={item?.name}
+            goToDetail={() => navigation?.navigate("dishDetail")}
+            image={item?.image}
+          />
         ))}
       </ScrollView>
     </Container>

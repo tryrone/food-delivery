@@ -10,6 +10,11 @@ import StarSvg from "./star.svg";
 import StockSvg from "./stock.svg";
 import TimeSvg from "./time.svg";
 import UnlikeSvg from "./unlike.svg";
+import HomeIcon from "./home.svg";
+import HeartIcon from "./heart.svg";
+import BellIcon from "./bell.svg";
+import BigSearchIcon from "./big_search.svg";
+import BagIcon from "./bag.svg";
 
 export {
   FireSvg,
@@ -24,4 +29,9 @@ export {
   StockSvg,
   TimeSvg,
   UnlikeSvg,
+  HomeIcon,
+  HeartIcon,
+  BellIcon,
+  BigSearchIcon,
+  BagIcon,
 };

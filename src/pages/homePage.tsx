@@ -11,6 +11,10 @@ import Categories from "../components/categories";
 import Popular from "../components/popular";
 import SpecialOffers from "../components/specialOffers";
 import Picks from "../components/picks";
+import CategoryBtns from "../components/categoryBtns";
+import AllChops from "../components/allChops";
+import { useNavigation } from "@react-navigation/native";
+import { ScreenDefaultProps } from "../types";
 
 const SpacedRow = styled.View`
   flex-direction: row;
@@ -26,7 +30,7 @@ const ProfileImage = styled.Image`
   border-color: ${Colors?.borderColor};
 `;
 
-const HomePage = () => {
+const HomePage = ({ navigation }: ScreenDefaultProps) => {
   const placeholderImage =
     "https://st4.depositphotos.com/4157265/41100/i/450/depositphotos_411005388-stock-photo-profile-picture-of-smiling-30s.jpg";
   return (
@@ -71,7 +75,9 @@ const HomePage = () => {
         <Categories />
         <Popular />
         <SpecialOffers />
-        <Picks />
+        <Picks navigation={navigation} />
+        <CategoryBtns />
+        <AllChops />
       </ScrollView>
     </SafeAreaWrap>
   );
