@@ -15,6 +15,8 @@ import Fonts from "../constants/Fonts";
 import CustomText from "./CustomText";
 import { LinearGradient } from "expo-linear-gradient";
 import { kar, lentil, vegan } from "../../assets/images";
+import { ScreenDefaultProps } from "../types";
+import { SharedElement } from "react-navigation-shared-element";
 
 const { width } = Dimensions.get("window");
 
@@ -27,6 +29,7 @@ const SpaceBetween = styled.View<{ mb?: number }>`
 
 const Container = styled.View<{ mt?: number }>`
   margin-top: ${({ mt }) => mt || 0}px;
+  margin-bottom: 80px;
 `;
 
 const Row = styled.View<{ mt?: number }>`
@@ -35,7 +38,7 @@ const Row = styled.View<{ mt?: number }>`
   margin-top: ${({ mt }) => mt || 0}px;
 `;
 
-const ContainerWrap = styled.View`
+const ContainerWrap = styled.TouchableOpacity`
   height: ${width - 40}px;
   align-self: center;
   width: 130px;
@@ -66,6 +69,8 @@ interface ChopsCardProps {
   dishName: string;
   rating: number;
   startGradient: string;
+  id: string;
+  goToDetail?: () => void;
 }
 
 const ChopsCard = ({
@@ -73,6 +78,8 @@ const ChopsCard = ({
   dishName,
   rating,
   startGradient,
+  id,
+  goToDetail,
 }: ChopsCardProps): JSX.Element => {
   const elementsRotation = { rotateZ: "270deg" };
   const textsRotation = { rotateZ: "90deg" };
@@ -92,6 +99,7 @@ const ChopsCard = ({
 
         elevation: 5,
       }}
+      onPress={goToDetail}
     >
       <LinearGradient
         colors={[startGradient, Colors?.white, Colors?.white]}
@@ -112,11 +120,13 @@ const ChopsCard = ({
         }}
       >
         <View>
-          <DishImage
-            source={image}
-            style={{ transform: [textsRotation] }}
-            resizeMode="contain"
-          />
+          <SharedElement id={id}>
+            <DishImage
+              source={image}
+              style={{ transform: [textsRotation] }}
+              resizeMode="contain"
+            />
+          </SharedElement>
 
           <View
             style={{
@@ -212,25 +222,28 @@ const BlackCard = (): JSX.Element => {
   );
 };
 
-const AllChops = (): JSX.Element => {
+const AllChops = ({ navigation }: ScreenDefaultProps): JSX.Element => {
   const chopsArray = [
     {
-      img: kar,
+      image: kar,
       text: "Mixed",
       rating: 4.7,
       startGradient: "rgba(222, 241, 245, 0.623529)",
+      id: "chopsImgOne",
     },
     {
-      img: lentil,
+      image: lentil,
       text: "Lentil",
       rating: 4,
       startGradient: "rgba(170, 227, 169, 0)",
+      id: "chopsImgTwo",
     },
     {
-      img: vegan,
+      image: vegan,
       text: "Fennel with Caramelized Onions",
       rating: 4.7,
       startGradient: "rgba(232, 172, 185,0.1)",
+      id: "chopsImgThree",
     },
   ];
 
@@ -276,8 +289,10 @@ const AllChops = (): JSX.Element => {
             startGradient={item?.startGradient}
             key={index}
             dishName={item?.text}
-            image={item?.img}
+            image={item?.image}
             rating={item?.rating}
+            id={item?.id}
+            goToDetail={() => navigation?.navigate("dishDetail", { item })}
           />
         );
       })}

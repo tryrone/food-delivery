@@ -1,11 +1,12 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTab from "./pages/bottomTab";
 import DishDetail from "./pages/dishDetail";
+import { createSharedElementStackNavigator } from "react-navigation-shared-element";
 
 const Navigation = () => {
-  const Stack = createNativeStackNavigator();
+  const Stack = createSharedElementStackNavigator();
 
   return (
     <NavigationContainer>

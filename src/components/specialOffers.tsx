@@ -20,7 +20,7 @@ const FlexView = styled.View<{ flexSize?: number }>`
   flex: ${({ flexSize }) => flexSize || 1}px;
   justify-content: center;
   align-items: center;
-  z-index: 2px;
+  z-index: 2;
 `;
 
 const Image = styled.Image`

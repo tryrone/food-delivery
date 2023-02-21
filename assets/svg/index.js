@@ -15,6 +15,12 @@ import HeartIcon from "./heart.svg";
 import BellIcon from "./bell.svg";
 import BigSearchIcon from "./big_search.svg";
 import BagIcon from "./bag.svg";
+import BackArrow from "./back_arrow.svg";
+import PlusSvg from "./plus.svg";
+import MinusSvg from "./minus.svg";
+import TeaSvg from "./tea.svg";
+import CheckBoxSvg from "./check.svg";
+import UncheckBoxSvg from "./uncheck.svg";
 
 export {
   FireSvg,
@@ -34,4 +40,10 @@ export {
   BellIcon,
   BigSearchIcon,
   BagIcon,
+  BackArrow,
+  PlusSvg,
+  MinusSvg,
+  TeaSvg,
+  CheckBoxSvg,
+  UncheckBoxSvg,
 };

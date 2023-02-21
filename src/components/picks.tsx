@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, ScrollView } from "react-native";
+import { SharedElement } from "react-navigation-shared-element";
 import styled from "styled-components/native";
 import { kar, lentil, vegan } from "../../assets/images";
 import {
@@ -59,13 +60,14 @@ const BtnWrap = styled.TouchableOpacity<{ mr?: number }>`
   align-items: center;
 `;
 
-type CardProps = {
-  name: string;
+export type CardProps = {
+  name?: string;
   image: number;
-  goToDetail: () => void;
+  id: string;
+  goToDetail?: () => void;
 };
 
-const Card = ({ name, image, goToDetail }: CardProps): JSX.Element => {
+const Card = ({ name, image, goToDetail, id }: CardProps): JSX.Element => {
   const [liked, setLiked] = useState(false);
   return (
     <CardWrap onPress={goToDetail}>
@@ -81,7 +83,9 @@ const Card = ({ name, image, goToDetail }: CardProps): JSX.Element => {
         </CustomText>
       </View>
 
-      <FoodImage source={image} resizeMode="contain" />
+      <SharedElement id={id}>
+        <FoodImage source={image} resizeMode="contain" />
+      </SharedElement>
 
       <Row mt={141}>
         <TimeSvg />
@@ -135,14 +139,17 @@ const Picks = ({ navigation }: ScreenDefaultProps): JSX.Element => {
     {
       image: kar,
       name: "Mixed",
+      id: "image1",
     },
     {
       image: lentil,
       name: "Lentil",
+      id: "image2",
     },
     {
       image: vegan,
       name: "Veges",
+      id: "image3",
     },
   ];
   return (
@@ -174,8 +181,9 @@ const Picks = ({ navigation }: ScreenDefaultProps): JSX.Element => {
           <Card
             key={index}
             name={item?.name}
-            goToDetail={() => navigation?.navigate("dishDetail")}
+            goToDetail={() => navigation?.navigate("dishDetail", { item })}
             image={item?.image}
+            id={item?.id}
           />
         ))}
       </ScrollView>

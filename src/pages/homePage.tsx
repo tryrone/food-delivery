@@ -13,7 +13,6 @@ import SpecialOffers from "../components/specialOffers";
 import Picks from "../components/picks";
 import CategoryBtns from "../components/categoryBtns";
 import AllChops from "../components/allChops";
-import { useNavigation } from "@react-navigation/native";
 import { ScreenDefaultProps } from "../types";
 
 const SpacedRow = styled.View`
@@ -77,7 +76,7 @@ const HomePage = ({ navigation }: ScreenDefaultProps) => {
         <SpecialOffers />
         <Picks navigation={navigation} />
         <CategoryBtns />
-        <AllChops />
+        <AllChops navigation={navigation} />
       </ScrollView>
     </SafeAreaWrap>
   );

@@ -27,5 +27,9 @@ export default {
   lemonGreen: "rgba(190, 225, 173, 0.74)",
   lightGrey: "#F6F6F6",
   grey_3: "#B3B3B3",
+  grey_4: "#686868",
+  grey_5: "#BCBCBC",
   tabBg: "#ECEBEB",
+  btn_bg: "#F0F0F0",
+  green_2: "#64DC70",
 };
